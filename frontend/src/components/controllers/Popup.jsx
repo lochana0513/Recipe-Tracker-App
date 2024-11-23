@@ -5,10 +5,17 @@ const Popup = ({ onClose, children }) => {
   return (
     <div className="overlay">
       <div className="popup">
-        <button className="closeButton" onClick={onClose}>
-          X
-        </button>
-        {children}
+        <div className="popup-container-up">
+            <button className="closeButton" onClick={onClose}>
+            X
+            </button>
+        </div>
+        <div className="popup-container-down">
+            {children}
+        </div>
+
+
+
       </div>
     </div>
   );

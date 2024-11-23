@@ -22,15 +22,14 @@
         |-- components
             |-- controllers
                 |-- Popup.jsx
-            |-- EditRecipe
             |-- Footer.jsx
             |-- home
+                |-- AddRecipe.jsx
                 |-- Herosection.jsx
                 |-- ManageBar.jsx
                 |-- RecipeCard.jsx
                 |-- RecipeContainer.jsx
             |-- Navbar.jsx
-            |-- RecipeDetails
         |-- index.css
         |-- index.js
         |-- logo.svg
@@ -38,19 +37,22 @@
             |-- EditRecipe.jsx
             |-- Home.jsx
             |-- Login.jsx
-            |-- RecipeDetailPage.jsx
+            |-- RecipeDetails.jsx
             |-- SignUp.jsx
         |-- reportWebVitals.js
         |-- setupTests.js
         |-- styles
             |-- controllers
                 |-- Popup.css
+            |-- EditRecipe.css
             |-- Footer.css
             |-- home
+                |-- AddRecipe.css
                 |-- Herosection.css
                 |-- ManageBar.css
                 |-- RecipeCard.css
                 |-- RecipeContainer.css
             |-- Navbar.css
+            |-- RecipeDetails.css
 |-- LICENSE
 |-- README.md

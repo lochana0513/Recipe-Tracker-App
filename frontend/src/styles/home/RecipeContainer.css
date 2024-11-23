@@ -4,3 +4,11 @@
     gap: 20px; /* Space between the cards */
     margin-top: 3rem;
   }
+
+  .view-recipe-title {
+    font-size: 2rem;
+    color:var(--blacl-text-color);
+    text-align: center;
+    margin-top: 20px;
+  }
+  

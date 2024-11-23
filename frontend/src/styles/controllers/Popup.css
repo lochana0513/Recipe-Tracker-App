@@ -11,20 +11,52 @@
     align-items: center;
   }
   
-  .popup {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    min-width: 300px;
+.popup {
+background: white;
+padding: 20px;
+border-radius: 8px;
+min-width: 800px;
+}
+
+.popup-container-up
+{
+width: 100%;
+}
+
+.popup-container-down {
+    width: 100%;
+    margin-top: 1rem;
+    max-height: 600px;
+    overflow-y: auto; 
+    overflow-x: hidden; 
+  }
+
+  /* Hide the scrollbar for Webkit browsers (Chrome, Safari) */
+.popup-container-down::-webkit-scrollbar {
+    display: none;
   }
   
-  .closeButton {
-    background: red;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 5px 10px;
-    cursor: pointer;
-    float: right;
+  /* For other browsers (Firefox, Edge) */
+  .popup-container-down {
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
   }
   
+
+.closeButton{
+width: 35px; 
+height: 35px; 
+border: unset;
+border-radius: 50%; 
+color: var(--color-white);
+z-index: 1;
+background-color: var(--delete-button-color);
+position: relative;
+font-weight: 1000;
+font-size: 1rem;
+overflow: hidden;
+float: right;
+cursor: pointer;
+}
+
+

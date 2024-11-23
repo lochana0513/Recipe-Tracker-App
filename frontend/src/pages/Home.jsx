@@ -3,6 +3,7 @@ import ManageBar from '../components/home/ManageBar';
 import Herosection from '../components/home/Herosection';
 import Popup from '../components/controllers/Popup';
 import RecipeContainer from '../components/home/RecipeContainer';
+import AddRecipe from '../components/home/AddRecipe';
 function Home() {
 
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -19,7 +20,7 @@ function Home() {
         <ManageBar ontoggleCreateJob={openPopup} />
         {isPopupOpen && (
           <Popup onClose={closePopup}>
-            <p>Hello! This is a popup.</p>
+            <AddRecipe/>
           </Popup>
         )}
         <RecipeContainer/>

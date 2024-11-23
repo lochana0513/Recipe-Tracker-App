@@ -14,13 +14,17 @@
   --color-primary: #EB4A36;
   --sub-text-color: #666;
   --blacl-text-color: #000;
+  --title-text-size:2rem;
   --border-raduis:8px;
   --button-font-weight: 500;
+  --text-font-weight:600;
   --delete-button-color: #dc3545;
   --edit-button-color: #4CAF50;
   --text-size-1:16px;
   --text-size-2:18px;
-  --text-size-3:18px;
+  --text-size-3:14px;
+  --title-text-size:2rem;
+  --second-title-text-size:24px;
   --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   --box-shadow-hover:0 6px 12px rgba(0, 0, 0, 0.2);
 
@@ -38,3 +42,33 @@ section {
   margin-right: 7rem;
   text-align: center;
 }
+
+
+.back-button {
+  display: flex;
+  height: 3em;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  letter-spacing: 1px;
+  transition: all 0.2s linear;
+  cursor: pointer;
+  border: 2px solid #dc3545;
+  background-color: #dc3545;
+  position: relative; /* Ensure it positions ::before properly */
+  z-index: 1; /* Ensure it's above the ::before element */
+  font-size:var(--text-size-1);
+  color: var(--color-white);
+  padding: 15px 20px;
+  font-weight: var(--button-font-weight);
+
+  
+}
+
+.back-button span{
+    margin-left: 10px;
+  }
+
+
+
+ 

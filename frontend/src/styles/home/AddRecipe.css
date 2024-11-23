@@ -1,0 +1,106 @@
+/* General container for the add recipe form */
+.add-recipe-container {
+    max-width:100%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: transparent;
+
+  }
+  
+  .add-recipe-title {
+    text-align: center;
+    font-size: var(--second-title-text-size);
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-label {
+    font-size: 16px;
+    margin-bottom: 8px;
+    display: block;
+    text-align: left;
+  }
+  
+  .form-input, .form-textarea {
+    width: 100%;
+    padding: 15px;
+    font-size:var(--text-size-1);
+    border: 1px solid #ccc;
+    border-radius: var( --border-raduis);
+  }
+  
+  .form-textarea {
+    height: 150px;
+    resize: none;
+
+  }
+  
+  .ingredient-input-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .ingredient-input-container .form-input {
+    width:75%;
+  }
+  
+  .add-ingredient-button {
+    padding: 15px 20px;
+    margin-left: 10px;
+    background-color: var(--sub-text-color);
+    color: var(--color-white);
+    border: none;
+    border-radius: var( --border-raduis);
+    cursor: pointer;
+    width: 25%;
+    font-size: var(--text-size-1);
+
+  }
+  
+  
+  .ingredient-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .ingredient-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    padding-left: 15px;
+    border-bottom: 1px solid #ccc;
+
+  }
+  
+  .remove-ingredient-button {
+    background-color:var(--delete-button-color);
+    color: var(--color-white);
+    border: none;
+    padding: 15px 20px;
+    cursor: pointer;
+    width: 25%;
+    font-size: var(--text-size-1);
+    border-radius: var( --border-raduis);
+  }
+  
+
+  .add-recipe-save-container
+  {
+    width: 100%;
+  }
+  
+  .save-recipe-button {
+    width: 350px;
+    padding: 15px 20px;
+    background-color: var(--edit-button-color);
+    color:var(--color-white);
+    border: none;
+    border-radius: var( --border-raduis);
+    cursor: pointer;
+    font-size: var(--text-size-2);
+
+  }

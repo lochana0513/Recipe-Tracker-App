@@ -1,0 +1,71 @@
+.view-recipe-container-main
+{
+    min-height: 500px;
+}
+.view-recipe-controll-container {
+    display: flex;
+    align-items: center;
+}
+
+
+.view-recipe-container-main .view-recipe-title {
+    font-size: var(--title-text-size);
+    color: var(--blacl-text-color);
+    margin-top: 20px;
+    text-align: center;
+}
+
+.view-recipe-container {
+
+    margin-top: 40px;
+    gap: 40px;
+}
+
+.view-recipe-container-left, .view-recipe-container-right {
+    width: 100%;
+    margin-top: 2rem;
+}
+
+.view-recipe-container-main .section-title {
+    font-size: var(--second-title-text-size);
+    font-weight: var(--text-font-weight);
+    color:var(--blacl-text-color);
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.view-recipe-container-main .recipe-description {
+    font-size:var(--text-size-1);
+    line-height: 1.6;
+    color: var(--sub-text-color);
+    background-color: var(--color-white);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+
+.view-recipe-container-main .ingredient-list {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Adds space between items */
+}
+
+.view-recipe-container-main .ingredient-item {
+    font-size: var(--text-size-1);
+    color: var(--sub-text-color);
+    background-color: #fff;
+    padding: 10px 12px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+    flex: 1 1 calc(50% - 10px); /* Makes each item take up 50% of the width minus the gap */
+    margin-bottom: 10px;
+}
+
+.view-recipe-container-main .ingredient-item:hover {
+    background-color: #f0f0f0;
+}

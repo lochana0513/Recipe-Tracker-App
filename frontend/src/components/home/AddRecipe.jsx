@@ -1,41 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { MdArrowBack } from 'react-icons/md';
-import './../styles/EditRecipe.css';
-import { useNavigate } from 'react-router-dom';
-function EditRecipe() {
-  const { id } = useParams(); // Extract the recipe ID from the route
+import React, { useState } from 'react';
+import './../../styles/home/AddRecipe.css';  // Import the CSS file
+
+function AddRecipe() {
   const [recipeName, setRecipeName] = useState('');
   const [description, setDescription] = useState('');
   const [ingredients, setIngredients] = useState([]);
   const [ingredient, setIngredient] = useState('');
 
-  const navigate = useNavigate(); // Initialize useNavigate hook
-
-  const handleBackClick = () => {
-    navigate(`/`); // Navigate to the home page (or any other path you prefer)
-  }
-
-  useEffect(() => {
-    // Simulate fetching the existing recipe by ID
-    const mockRecipes = [
-      { id: 1, name: 'Spaghetti Bolognese', description: 'Classic Italian dish.', ingredients: ['Spaghetti', 'Tomato Sauce'] },
-      { id: 2, name: 'Chicken Curry', description: 'Spicy curry.', ingredients: ['Chicken', 'Turmeric'] },
-      { id: 3, name: 'Vegetarian Pizza', description: 'Healthy pizza.', ingredients: ['Bell Peppers', 'Cheese'] },
-    ];
-
-    const recipe = mockRecipes.find((r) => r.id === parseInt(id, 10));
-    if (recipe) {
-      setRecipeName(recipe.name);
-      setDescription(recipe.description);
-      setIngredients(recipe.ingredients);
-    }
-  }, [id]); // Dependency ensures this runs when the ID changes
-
   const addIngredient = () => {
     if (ingredient) {
       setIngredients([...ingredients, ingredient]);
-      setIngredient('');
+      setIngredient(''); // Reset ingredient input field
     }
   };
 
@@ -43,30 +18,18 @@ function EditRecipe() {
     setIngredients(ingredients.filter((_, i) => i !== index));
   };
 
-  const handleUpdate = () => {
-    const updatedRecipe = {
-      id: parseInt(id, 10),
+  const handleSubmit = () => {
+    const recipe = {
       name: recipeName,
-      description,
-      ingredients,
+      description: description,
+      ingredients: ingredients,
     };
-    console.log('Updated Recipe:', updatedRecipe);
-    // Add API call or state update logic here
+    console.log('Recipe Saved:', recipe);
   };
 
   return (
-    <section className="edit-recipe-container-main">
-
-    <div className="edit-recipe-controll-container">
-            <button className="back-button" onClick={handleBackClick} >
-              <MdArrowBack />
-              <span>Back</span>
-            </button>
-    </div>
-
-
-    <div className="edit-recipe-container">
-      <h2 className="edit-recipe-title">Edit Recipe</h2>
+    <div className="add-recipe-container">
+      <h2 className="add-recipe-title">Add a New Recipe</h2>
 
       <div className="form-group">
         <label htmlFor="recipe-name" className="form-label">Recipe Name:</label>
@@ -116,14 +79,11 @@ function EditRecipe() {
           </ul>
         )}
       </div>
-
-      <div className="edit-recipe-save-container">
-        <button className="save-recipe-button" onClick={handleUpdate}>Update Recipe</button>
+      <div className="add-recipe-save-container">
+      <button className="save-recipe-button" onClick={handleSubmit}>Save Recipe</button>
       </div>
     </div>
-
-    </section>
   );
 }
 
-export default EditRecipe;
+export default AddRecipe;

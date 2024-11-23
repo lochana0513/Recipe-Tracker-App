@@ -1,0 +1,114 @@
+.edit-recipe-controll-container
+{
+  display: flex;
+  width: 100%;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+  .edit-recipe-title {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: var(--title-text-size);
+    color: var(--blacl-text-color);
+    text-align: center;
+    margin-top: 20px;     
+  }
+  
+  .edit-recipe-container-main .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .edit-recipe-container-main .form-label {
+    font-size: var(--text-size-1);
+    margin-bottom: 8px;
+    display: block;
+    text-align: left;
+  }
+  
+  .edit-recipe-container-main .form-input,.edit-recipe-container-main .form-textarea {
+    width: 100%;
+    padding: 15px;
+    font-size:var(--text-size-1);
+    border: 1px solid #ccc;
+    border-radius: var( --border-raduis);
+  }
+  
+  .edit-recipe-container-main .form-textarea {
+    height: 250px;
+    resize: none;
+
+  }
+  
+  .edit-recipe-container-main .ingredient-input-container {
+    display: flex;
+    align-items: center;
+    width: 80%;
+  }
+
+  .edit-recipe-container-main .ingredient-input-container .form-input {
+    width:80%;
+  }
+  
+  .edit-recipe-container-main .add-ingredient-button {
+    padding: 15px 20px;
+    margin-left: 10px;
+    background-color: var(--sub-text-color);
+    color: var(--color-white);
+    border: none;
+    border-radius: var( --border-raduis);
+    cursor: pointer;
+    width: 20%;
+    font-size: var(--text-size-1);
+
+  }
+  
+  
+  .edit-recipe-container-main .ingredient-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .edit-recipe-container-main .ingredient-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    padding-left: 15px;
+    border-bottom: 1px solid #ccc;
+    width: 80%;
+
+  }
+  
+  .edit-recipe-container-main .remove-ingredient-button {
+    background-color:var(--delete-button-color);
+    color: var(--color-white);
+    border: none;
+    padding: 15px 20px;
+    cursor: pointer;
+    width: 20%;
+    font-size: var(--text-size-1);
+    border-radius: var( --border-raduis);
+  }
+  
+
+  .edit-recipe-save-container
+  {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+
+  }
+  
+  .edit-recipe-container-main .save-recipe-button {
+    width: 350px;
+    padding: 20px 30px;
+    background-color: var(--edit-button-color);
+    color: var(--color-white);
+    border: none;
+    border-radius: var( --border-raduis);
+    cursor: pointer;
+    font-size: var(--text-size-2);
+    margin-top: 3rem;
+
+  }
