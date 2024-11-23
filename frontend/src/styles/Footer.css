@@ -1,0 +1,16 @@
+/* Footer container */
+.footer {
+    background-color: var(--color-white);
+    color: var(--blacl-text-color);
+    text-align: center;
+    padding: 15px;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  /* Footer text styling */
+  .footer p {
+    margin: 0;
+    font-size: 14px;
+  }
+  

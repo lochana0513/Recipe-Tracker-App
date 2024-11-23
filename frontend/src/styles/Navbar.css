@@ -1,0 +1,43 @@
+/* Navbar container */
+.navbar {
+    display: flex;
+    justify-content: space-between;  /* Ensures content is spaced out */
+    align-items: center;
+    padding: 2rem 7rem;
+    background-color:transparent;
+    color: var(--color-primary);
+
+  }
+  
+  /* Container for logo on the left */
+  .navbar-left {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Logo styling */
+  .navbar-left .logo img {
+    height: 60px; 
+  }
+  
+  /* Container for sign-out button on the right */
+  .navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  /* Sign-out button styling */
+  .navbar-right .sign-out {
+    background-color: var(--color-primary);
+    border: none;
+    color: var(--color-white);
+    padding: 12px 35px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 25px;
+    font-weight:var(--button-font-weight);
+  }
+  
+
+  

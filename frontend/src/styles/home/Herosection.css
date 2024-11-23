@@ -1,0 +1,29 @@
+.hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 50vh;
+    background-image: url('https://via.placeholder.com/1920x1080'); /* Replace with your image URL */
+    background-size: cover;
+    background-position: center;
+    color: var(--color-white);
+    border-radius: var(--border-raduis);
+    text-align: left;
+    padding: 20px 60px;
+
+  }
+  
+  .hero-content {
+    max-width: 600px;
+  }
+  
+  .hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-content p {
+    font-size: 1.5rem;
+    line-height: 1.5;
+  }
+  

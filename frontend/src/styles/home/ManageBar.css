@@ -1,0 +1,23 @@
+.manage-bar-reciepe {
+    display: flex;
+    justify-content: flex-end; 
+  }
+  
+  .add-reciepe-button {
+    display: flex;
+    align-items: center;
+    background-color: var(--color-primary); 
+    color: var(--color-white); 
+    border: none;
+    border-radius: var(--border-raduis);
+    padding: 20px 30px;
+    cursor: pointer;
+    font-size: var(--text-size-2);
+    transition: background-color 0.3s ease;
+    font-weight: var(--button-font-weight);
+  }
+  
+  
+  .add-reciepe-button svg {
+    margin-right: 12px; 
+  }

@@ -1,0 +1,56 @@
+|-- .gitattributes
+|-- .gitignore
+|-- backend
+|-- frontend
+    |-- .gitignore
+    |-- package-lock.json
+    |-- package.json
+    |-- public
+        |-- favicon.ico
+        |-- index.html
+        |-- logo192.png
+        |-- logo512.png
+        |-- manifest.json
+        |-- robots.txt
+    |-- README.md
+    |-- src
+        |-- App.jsx
+        |-- App.test.js
+        |-- assets
+            |-- img
+                |-- RecipeLog-logo.png
+        |-- components
+            |-- controllers
+                |-- Popup.jsx
+            |-- EditRecipe
+            |-- Footer.jsx
+            |-- home
+                |-- Herosection.jsx
+                |-- ManageBar.jsx
+                |-- RecipeCard.jsx
+                |-- RecipeContainer.jsx
+            |-- Navbar.jsx
+            |-- RecipeDetails
+        |-- index.css
+        |-- index.js
+        |-- logo.svg
+        |-- pages
+            |-- EditRecipe.jsx
+            |-- Home.jsx
+            |-- Login.jsx
+            |-- RecipeDetailPage.jsx
+            |-- SignUp.jsx
+        |-- reportWebVitals.js
+        |-- setupTests.js
+        |-- styles
+            |-- controllers
+                |-- Popup.css
+            |-- Footer.css
+            |-- home
+                |-- Herosection.css
+                |-- ManageBar.css
+                |-- RecipeCard.css
+                |-- RecipeContainer.css
+            |-- Navbar.css
+|-- LICENSE
+|-- README.md

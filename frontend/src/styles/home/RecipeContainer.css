@@ -1,0 +1,6 @@
+.recipe-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 items per row */
+    gap: 20px; /* Space between the cards */
+    margin-top: 3rem;
+  }
