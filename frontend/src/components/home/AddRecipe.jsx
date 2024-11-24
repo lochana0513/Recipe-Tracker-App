@@ -3,19 +3,22 @@ import './../../styles/home/AddRecipe.css'; // Import the CSS file
 import ConfirmationModal from './../controllers/ConfirmationModal';
 
 function AddRecipe({ onAddRecipe, onNotify }) {
+  // State hooks for managing form data
   const [recipeName, setRecipeName] = useState('');
   const [description, setDescription] = useState('');
   const [ingredients, setIngredients] = useState([]);
   const [ingredient, setIngredient] = useState('');
 
-  // Error states
+  // Error state hooks for form validation
   const [recipeNameError, setRecipeNameError] = useState('');
   const [descriptionError, setDescriptionError] = useState('');
   const [ingredientsError, setIngredientsError] = useState('');
   const [ingredientError, setIngredientError] = useState('');
 
+  // State for showing/hiding the confirmation modal
   const [showConfirmation, setShowConfirmation] = useState(false);
 
+  // Handle changes in the recipe name input
   const handleRecipeNameChange = (e) => {
     const value = e.target.value;
     setRecipeName(value);
@@ -24,6 +27,7 @@ function AddRecipe({ onAddRecipe, onNotify }) {
     }
   };
 
+   // Handle changes in the recipe description input
   const handleDescriptionChange = (e) => {
     const value = e.target.value;
     setDescription(value);
@@ -32,6 +36,7 @@ function AddRecipe({ onAddRecipe, onNotify }) {
     }
   };
 
+  // Handle changes in the individual ingredient input
   const handleIngredientChange = (e) => {
     const value = e.target.value;
     setIngredient(value);
@@ -40,6 +45,7 @@ function AddRecipe({ onAddRecipe, onNotify }) {
     }
   };
 
+  // Add the ingredient to the ingredients list
   const addIngredient = () => {
     if (!ingredient.trim()) {
       setIngredientError('Ingredient cannot be empty.');
@@ -59,11 +65,12 @@ function AddRecipe({ onAddRecipe, onNotify }) {
     setIngredientsError('');
   };
   
-
+  // Remove an ingredient from the list by index
   const removeIngredient = (index) => {
     setIngredients(ingredients.filter((_, i) => i !== index));
   };
 
+  // Form validation function to check required fields
   const validateForm = () => {
     let valid = true;
 
@@ -85,6 +92,7 @@ function AddRecipe({ onAddRecipe, onNotify }) {
     return valid;
   };
 
+  // Confirm adding the recipe after confirmation
   const confirmAddRecipe = () => {
     // Close the confirmation modal
     setShowConfirmation(false);
@@ -106,6 +114,7 @@ function AddRecipe({ onAddRecipe, onNotify }) {
  
   };
 
+  // Handle form submission and trigger validation
   const handleSubmit = () => {
     if (!validateForm()) return;
     setShowConfirmation(true);

@@ -6,7 +6,7 @@
     background-image: url('./../../assets/img/hero-banner.jpg'); /* Replace with your image URL */
     background-size: cover;
     background-position: center;
-    color: var(--color-white);
+    color: #ffffff;
     border-radius: var(--border-raduis);
     text-align: left;
     padding: 20px 60px;

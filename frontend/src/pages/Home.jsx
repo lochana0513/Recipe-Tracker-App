@@ -9,11 +9,9 @@ import Notification from './../components/controllers/Notification';
 
 function Home() {
   const [recipes, setRecipes] = useState([]);
-
   const [showNotification, setShowNotification] = useState(false);
   const [notificationType, setNotificationType] = useState('');
   const [notificationMessage, setNotificationMessage] = useState('');
-  
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   const openPopup = () => setIsPopupOpen(true);
@@ -25,10 +23,34 @@ function Home() {
     setShowNotification(true);
   };
 
+  const confirmDelete = async (recipeToDelete) => {
+    if (recipeToDelete !== null) {
+      try {
+        // Make the API call to delete the recipe
+        const response = await axios.delete(`http://localhost:5000/api/recipes/${recipeToDelete}`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`, // Include token if needed for auth
+          },
+        });
+  
+        if (response.status === 200) {
+          // If deletion was successful, update the state
+          fetchRecipes();
+          triggerNotification('success', 'Recipe deleted successfully!');
+        } else {
+          triggerNotification('error', `Failed to delete recipe: ${response.data.message}`);
+        }
+      } catch (error) {
+        console.error('Error deleting recipe:', error);
+        triggerNotification('error', `Failed to delete recipe: ${error.response?.data?.message || error.message}`);
+      }
+    }
+  };
+
   // Fetch recipes on component mount
   useEffect(() => {
     fetchRecipes();
-  }, []); 
+  }, []);
 
   const fetchRecipes = async () => {
     try {
@@ -49,33 +71,33 @@ function Home() {
     }
   };
 
+
   const addRecipe = async (newRecipe) => {
     try {
-        const token = localStorage.getItem('token');
-        if (!token) throw new Error('Token not found');
+      const token = localStorage.getItem('token');
+      if (!token) throw new Error('Token not found');
 
-        const response = await axios.post(
-            'http://localhost:5000/api/recipes',
-            newRecipe,
-            {
-                headers: { 'Authorization': `Bearer ${token}` },
-            }
-        );
-
-        if (response.status === 201) {
-            const addedRecipe = { ...newRecipe, id: response.data._id };
-            setRecipes((prevRecipes) => [...prevRecipes, addedRecipe]);
-            triggerNotification('success', 'Recipe added successfully!');
-            fetchRecipes();
-            closePopup();
+      const response = await axios.post(
+        'http://localhost:5000/api/recipes',
+        newRecipe,
+        {
+          headers: { 'Authorization': `Bearer ${token}` },
         }
-    } catch (error) {
-        console.error('Error adding recipe:', error);
-        const message = error.response?.data?.message || 'Failed to add recipe.';
-        triggerNotification('error', message);
-    }
-};
+      );
 
+      if (response.status === 201) {
+        const addedRecipe = { ...newRecipe, id: response.data._id };
+        setRecipes((prevRecipes) => [...prevRecipes, addedRecipe]);
+        triggerNotification('success', 'Recipe added successfully!');
+        fetchRecipes();
+        closePopup();
+      }
+    } catch (error) {
+      console.error('Error adding recipe:', error);
+      const message = error.response?.data?.message || 'Failed to add recipe.';
+      triggerNotification('error', message);
+    }
+  };
 
   return (
     <div>
@@ -89,7 +111,12 @@ function Home() {
             <AddRecipe onAddRecipe={addRecipe} onNotify={triggerNotification} />
           </Popup>
         )}
-        <RecipeContainer recipes={recipes} setRecipes={setRecipes} />
+        <RecipeContainer
+          recipes={recipes}
+          setRecipes={setRecipes}
+          onConfirmDelete={confirmDelete}
+          onNotify={triggerNotification}
+        />
       </section>
 
       {showNotification && (

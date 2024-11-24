@@ -4,6 +4,7 @@ import { MdArrowBack } from 'react-icons/md';
 import './../styles/EditRecipe.css';
 import ConfirmationModal from './../components/controllers/ConfirmationModal';
 import Notification from './../components/controllers/Notification';
+import axios from 'axios'; // Import Axios
 
 function EditRecipe() {
   const { id } = useParams(); // Extract the recipe ID from the route
@@ -13,6 +14,7 @@ function EditRecipe() {
   const [description, setDescription] = useState('');
   const [ingredients, setIngredients] = useState([]);
   const [ingredient, setIngredient] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   // Error states
   const [recipeNameError, setRecipeNameError] = useState('');
@@ -86,47 +88,79 @@ function EditRecipe() {
     return valid;
   };
 
-  // Simulate fetching the existing recipe by ID on mount
   useEffect(() => {
-    const mockRecipes = [
-      { id: 1, name: 'Spaghetti Bolognese', description: 'Classic Italian dish.', ingredients: ['Spaghetti', 'Tomato Sauce'] },
-      { id: 2, name: 'Chicken Curry', description: 'Spicy curry.', ingredients: ['Chicken', 'Turmeric'] },
-      { id: 3, name: 'Vegetarian Pizza', description: 'Healthy pizza.', ingredients: ['Bell Peppers', 'Cheese'] },
-    ];
+      // Fetch recipe details from the backend
+      const fetchRecipeDetails = async () => {
+          try {
+              const token = localStorage.getItem('token'); // Get token from localStorage
+              if (!token) throw new Error('Unauthorized: Token not found.');
 
-    const recipe = mockRecipes.find((r) => r.id === parseInt(id, 10));
-    if (recipe) {
-      setRecipeName(recipe.name);
-      setDescription(recipe.description);
-      setIngredients(recipe.ingredients);
-    }
-  }, [id]);
+              const response = await axios.get(
+                  `http://localhost:5000/api/recipes/${id}`, // Replace with your API endpoint
+                  {
+                      headers: { Authorization: `Bearer ${token}` },
+                  }
+              );
 
-  const confirmUpdateRecipe = () => {
-    // Close the confirmation modal
-    setShowConfirmation(false);
+              const recipe = response.data;
 
-    try {
-
-      const updatedRecipe = {
-        id: parseInt(id, 10),
-        name: recipeName,
-        description:description ,
-        ingredients: ingredients,
+              setRecipeName(recipe.name);
+              setDescription(recipe.description);
+              setIngredients(recipe.ingredients || []); // Ensure ingredients is an array
+          } catch (error) {
+              console.error('Error fetching recipe details:', error);
+              const message = error.response?.data?.message || 'Failed to fetch recipe details.';
+              setErrorMessage(message);
+          }
       };
 
-      // Simulate successful addition
-      triggerNotification('success', 'Recipe Updated successfully!');
-    } catch (error) {
-      console.error('Error Updating recipe:', error);
-      triggerNotification('error', `Failed to Updating recipe: ${error.message}`);
-    }
-    setTimeout(() => {
-      navigate(`/`);
-    }, 1000);
+      fetchRecipeDetails();
+  }, [id]);
 
-     
+
+  const confirmUpdateRecipe = async () => {
+    // Close the confirmation modal
+    setShowConfirmation(false);
+  
+    try {
+      const updatedRecipe = {
+        id, // Ensure 'id' is correctly set in the context
+        name: recipeName,
+        description: description,
+        ingredients: ingredients,
+      };
+  
+      // Fetch or define the token
+      const token = localStorage.getItem('token');
+      if (!token) {
+        throw new Error('No token found. Please log in.');
+      }
+  
+      // Perform the Axios call with headers
+      const response = await axios.put(
+        `http://localhost:5000/api/recipes/${id}`,
+        updatedRecipe,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+  
+      if (response.status === 200) {
+        triggerNotification('success', 'Recipe updated successfully!');
+        setTimeout(() => {
+          navigate(`/`);
+        }, 700);
+      } else {
+        throw new Error('Unexpected response status: ' + response.status);
+      }
+    } catch (error) {
+      console.error('Error updating recipe:', error);
+      triggerNotification('error', `Failed to update recipe: ${error.response?.data?.message || error.message}`);
+    }
   };
+  
 
   const triggerNotification = (type, message) => {
     setNotificationType(type);
@@ -143,7 +177,7 @@ function EditRecipe() {
   return (
     <section className="edit-recipe-container-main">
       <div className="edit-recipe-controll-container">
-        <button className="back-button" onClick={() => navigate(`/`)}>
+        <button className="back-button" onClick={() => navigate(-1)}>
           <MdArrowBack />
           <span>Back</span>
         </button>

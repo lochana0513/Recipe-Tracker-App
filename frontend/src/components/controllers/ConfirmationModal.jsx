@@ -1,6 +1,7 @@
 import React from 'react';
 import './../../styles/controllers/ConfirmationModal.css';
 
+// Functional component for rendering a confirmation modal
 const ConfirmationModal = ({ title, message, actionType, onConfirm, onCancel }) => {
   // Determine button color based on action type
   const getButtonColor = () => {

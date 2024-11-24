@@ -2,6 +2,7 @@ import React from 'react';
 import './../../styles/home/RecipeCard.css'; // Optional: Add styles for the recipe card
 import { FaEdit, FaTrash } from 'react-icons/fa'; 
 
+// Functional component for displaying a recipe card
 function RecipeCard({ title, description, onView, onDelete, onUpdate }) {
   // Limit the description to 20 words
   const shortDescription = description.split(' ').slice(0, 20).join(' ') + '...';

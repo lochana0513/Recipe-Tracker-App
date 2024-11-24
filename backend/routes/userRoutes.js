@@ -56,11 +56,16 @@ router.post('/login', async (req, res) => {
 // Protected route example (Requires Authentication)
 router.get('/', authMiddleware, async (req, res) => {
     try {
-        const user = await User.findById(req.user._id); // Access user via token
+        const user = await User.findById(req.user.id); // Access user via token
         res.status(200).json({ user });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
+});
+
+// Token verification endpoint
+router.get('/verify-token', authMiddleware, (req, res) => {
+    res.status(200).json({ valid: true, userId: req.user.id });
 });
 
 module.exports = router;

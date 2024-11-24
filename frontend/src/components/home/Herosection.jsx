@@ -1,12 +1,13 @@
 import React from 'react';
-import './../../styles/home/Herosection.css'; // Optional for external styling
+import './../../styles/home/Herosection.css'; 
 
+// Functional component for Hero Section of the application
 function Herosection() {
   return (
     <div className="hero-section">
       <div className="hero-content">
-        <h1>Welcome to Our Website</h1>
-        <p>Discover amazing content and explore new opportunities with us.</p>
+        <h1>Welcome to RecipeLog </h1>
+        <p>Recipe Tracker App helps users store and manage their recipes.</p>
       </div>
     </div>
   );
