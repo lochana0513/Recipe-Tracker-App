@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import './../../styles/home/AddRecipe.css'; // Import the CSS file
 import ConfirmationModal from './../controllers/ConfirmationModal';
-import Notification from './../controllers/Notification';
 
-function AddRecipe({ onAddRecipe }) {
+function AddRecipe({ onAddRecipe, onNotify }) {
   const [recipeName, setRecipeName] = useState('');
   const [description, setDescription] = useState('');
   const [ingredients, setIngredients] = useState([]);
@@ -16,9 +15,6 @@ function AddRecipe({ onAddRecipe }) {
   const [ingredientError, setIngredientError] = useState('');
 
   const [showConfirmation, setShowConfirmation] = useState(false);
-  const [showNotification, setShowNotification] = useState(false);
-  const [notificationType, setNotificationType] = useState('');
-  const [notificationMessage, setNotificationMessage] = useState('');
 
   const handleRecipeNameChange = (e) => {
     const value = e.target.value;
@@ -49,14 +45,20 @@ function AddRecipe({ onAddRecipe }) {
       setIngredientError('Ingredient cannot be empty.');
       return;
     }
-    if (ingredients.includes(ingredient.trim())) {
+    // Avoid duplicates regardless of case
+    if (ingredients.map((ing) => ing.toLowerCase()).includes(ingredient.trim().toLowerCase())) {
       setIngredientError('Ingredient already added.');
       return;
     }
-    setIngredients([...ingredients, ingredient.trim()]);
-    setIngredient(''); // Reset ingredient input field
-    setIngredientsError(''); // Clear ingredients error if it was set
+  
+    // Update the state with the new ingredient
+    setIngredients((prevIngredients) => [...prevIngredients, ingredient.trim()]);
+    
+    // Reset the input and clear errors
+    setIngredient('');
+    setIngredientsError('');
   };
+  
 
   const removeIngredient = (index) => {
     setIngredients(ingredients.filter((_, i) => i !== index));
@@ -90,30 +92,18 @@ function AddRecipe({ onAddRecipe }) {
     try {
       const newRecipe = {
         name: recipeName,
-        description : description,
-        ingredients : ingredients,
+        description: description,
+        ingredients: ingredients,
       };
   
       // Call onAddRecipe to pass the new recipe back to the parent
       onAddRecipe(newRecipe);
-      // Simulate successful addition
-      triggerNotification('success', 'Recipe added successfully!');
+      
     } catch (error) {
       console.error('Error adding recipe:', error);
-      triggerNotification('error', `Failed to add recipe: ${error.message}`);
     }
 
-    // Clear form fields after submission
-    setRecipeName('');
-    setDescription('');
-    setIngredients([]);
-    setIngredient('');
-  };
-
-  const triggerNotification = (type, message) => {
-    setNotificationType(type);
-    setNotificationMessage(message);
-    setShowNotification(true);
+ 
   };
 
   const handleSubmit = () => {
@@ -189,14 +179,6 @@ function AddRecipe({ onAddRecipe }) {
           actionType="add"
           onConfirm={confirmAddRecipe}
           onCancel={() => setShowConfirmation(false)}
-        />
-      )}
-
-      {showNotification && (
-        <Notification
-          type={notificationType}
-          message={notificationMessage}
-          onClose={() => setShowNotification(false)}
         />
       )}
     </div>

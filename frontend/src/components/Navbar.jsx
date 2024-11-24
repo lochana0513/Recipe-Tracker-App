@@ -2,10 +2,11 @@ import React from 'react';
 import './../styles/Navbar.css';  // Import external CSS file
 import logo from "./../assets/img/RecipeLog-logo.png";
 
-function Navbar() {
-  const handleSignOut = () => {
-    // Sign-out logic 
-    console.log('User signed out');
+function Navbar({onLogout }) {
+
+  const refresh = () => {
+    // Refresh the current page
+    window.location.reload();
   };
 
   return (
@@ -17,13 +18,13 @@ function Navbar() {
         </div>
       </div>
       
-      {/* Container for Sign-out Button */}
+      {/* Container for Sign-out and Refresh Button */}
       <div className="navbar-right">
-        <button className="sign-out" onClick={handleSignOut}>
-        Refresh page
+        <button className="nav-button refresh-page" onClick={refresh}>
+          Refresh page
         </button>
 
-        <button className="sign-out" onClick={handleSignOut}>
+        <button className="nav-button sign-out" onClick={onLogout}>
           Sign Out
         </button>
       </div>

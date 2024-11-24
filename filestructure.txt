@@ -1,6 +1,20 @@
 |-- .gitattributes
 |-- .gitignore
 |-- backend
+    |-- .env
+    |-- app.js
+    |-- config
+        |-- db.js
+    |-- middleware
+        |-- authMiddleware.js
+    |-- models
+        |-- Recipe.js
+        |-- User.js
+    |-- package-lock.json
+    |-- package.json
+    |-- routes
+        |-- recipeRoutes.js
+        |-- userRoutes.js
 |-- frontend
     |-- .gitignore
     |-- package-lock.json
@@ -18,6 +32,8 @@
         |-- App.test.js
         |-- assets
             |-- img
+                |-- hero-banner.jpg
+                |-- recipe.png
                 |-- RecipeLog-logo.png
         |-- components
             |-- controllers
@@ -56,7 +72,9 @@
                 |-- ManageBar.css
                 |-- RecipeCard.css
                 |-- RecipeContainer.css
+            |-- Login.css
             |-- Navbar.css
             |-- RecipeDetails.css
+            |-- Signup.css
 |-- LICENSE
 |-- README.md

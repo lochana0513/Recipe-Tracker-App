@@ -28,7 +28,7 @@
   }
   
   /* Sign-out button styling */
-  .navbar-right .sign-out {
+  .navbar-right .nav-button {
     background-color: var(--color-primary);
     border: none;
     color: var(--color-white);

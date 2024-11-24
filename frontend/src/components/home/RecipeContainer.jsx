@@ -20,7 +20,7 @@ function RecipeContainer({ recipes, setRecipes }) {
     if (recipeToDelete !== null) {
       try {
         setRecipes((prevRecipes) =>
-          prevRecipes.filter((recipe) => recipe.id !== recipeToDelete)
+          prevRecipes.filter((recipe) => recipe._id !== recipeToDelete)
         );
         triggerNotification('success', 'Recipe deleted successfully!');
         setRecipeToDelete(null);
@@ -37,16 +37,16 @@ function RecipeContainer({ recipes, setRecipes }) {
     setShowNotification(true);
   };
 
-  const handleUpdateClick = (id) => {
-    navigate(`/edit-recipe/${id}`);
+  const handleUpdateClick = (_id) => {
+    navigate(`/edit-recipe/${_id}`);
   };
 
-  const handleViewClick = (id) => {
-    navigate(`/view-recipe/${id}`);
+  const handleViewClick = (_id) => {
+    navigate(`/view-recipe/${_id}`);
   };
 
-  const handleDeleteClick = (id) => {
-    setRecipeToDelete(id);
+  const handleDeleteClick = (_id) => {
+    setRecipeToDelete(_id);
     setShowConfirmation(true);
   };
 
@@ -57,12 +57,12 @@ function RecipeContainer({ recipes, setRecipes }) {
         {recipes && recipes.length > 0 ? (
           recipes.map((recipe) => (
             <RecipeCard
-              key={recipe.id}
+              key={recipe._id} // Use _id as the key
               title={recipe.name}
               description={recipe.description}
-              onView={() => handleViewClick(recipe.id)}
-              onUpdate={() => handleUpdateClick(recipe.id)}
-              onDelete={() => handleDeleteClick(recipe.id)}
+              onView={() => handleViewClick(recipe._id)} // Use _id for all actions
+              onUpdate={() => handleUpdateClick(recipe._id)}
+              onDelete={() => handleDeleteClick(recipe._id)}
             />
           ))
         ) : (

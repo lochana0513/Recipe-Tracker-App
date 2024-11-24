@@ -1,0 +1,135 @@
+
+.login-container {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--box-background-color);
+    padding: 20px;
+  }
+
+  .login-wrapper {
+    display: flex;
+    width: 100%;
+    max-width: 900px;
+    background-color: var(--box-background-color);
+    border-radius: var(--con-border-raduis);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+
+  .login-left {
+    flex: 1;
+    background: linear-gradient(150deg, #a2b2e5, #7193db);
+    color:var(--color-white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 50px;
+    margin: 2rem;
+    border-radius:var(--con-border-raduis);
+  }
+  
+  .login-left__title {
+    font-size: var(--title-text-size);
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    color:var(--color-white);
+  }
+  
+  .login-left__description {
+    font-size: var(--text-size-1);
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+  
+  .login-left__image {
+    margin-top: auto;
+    max-width: 200px;
+    align-self: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  /* Right Section */
+  .login-right {
+    flex: 1;
+    padding: 30px;
+    padding-right: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .login-right__welcome {
+    font-size: var(--title-text-size);
+    margin-bottom: 10px;
+  }
+  
+  .login-right__text {
+    margin-bottom: 30px;
+    color: var(--sub-text-color);
+  }
+  
+  .login-right__form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .login-right__form .error-message {
+    margin-bottom: 5px;
+    margin-top: -12px;
+    font-size: var(--text-size-3);
+  }
+  
+  .login-right__input[type="email"] {
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: var(--border-raduis);
+    font-size: var(--text-size-3);
+    transition: border-color 0.3s;
+  }
+  
+  .login-right__input[type="password"] {
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: var(--border-raduis);
+    font-size:var(--text-size-3);
+    transition: border-color 0.3s;
+  }
+
+  
+  
+  .login-right__button {
+    padding: 15px;
+    background-color:var(--color-primary);
+    color: var(--color-white);
+    border: none;
+    border-radius: var(--border-raduis);
+    font-size: var(--text-size-1);
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 2rem;
+  }
+  
+  .login-right__button:hover {
+    background-color:var(--color-primary)
+  }
+  .login-right__welcome
+  {
+    font-weight: bold;
+  }
+  .login-right_signup {
+    text-align: right;
+    margin-bottom: 20px;
+    color: var(--color-primary);
+    cursor: pointer;
+    font-size: var(--text-size-3);
+    text-decoration: underline;
+    margin-top: -5px;
+    margin-right: 5px;
+  }
+  

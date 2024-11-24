@@ -3,7 +3,7 @@
     align-items: center;
     justify-content: flex-start;
     height: 50vh;
-    background-image: url('https://via.placeholder.com/1920x1080'); /* Replace with your image URL */
+    background-image: url('./../../assets/img/hero-banner.jpg'); /* Replace with your image URL */
     background-size: cover;
     background-position: center;
     color: var(--color-white);

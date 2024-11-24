@@ -16,6 +16,7 @@
   --blacl-text-color: #3a3a3a;
   --title-text-size:2rem;
   --border-raduis:8px;
+  --con-border-raduis:1rem;
   --button-font-weight: 500;
   --text-font-weight:600;
   --delete-button-color: #dc3545;
@@ -27,6 +28,7 @@
   --second-title-text-size:24px;
   --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   --box-shadow-hover:0 6px 12px rgba(0, 0, 0, 0.2);
+  --box-background-color: #f0f2f5
 
 }
 

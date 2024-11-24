@@ -121,8 +121,11 @@ function EditRecipe() {
       console.error('Error Updating recipe:', error);
       triggerNotification('error', `Failed to Updating recipe: ${error.message}`);
     }
+    setTimeout(() => {
+      navigate(`/`);
+    }, 1000);
 
-     navigate(`/`);
+     
   };
 
   const triggerNotification = (type, message) => {
