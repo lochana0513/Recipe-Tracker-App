@@ -11,15 +11,15 @@
 :root {
   /* Main colors */
   --color-white: #FFFFFF;
-  --color-primary: #EB4A36;
+  --color-primary: #0855ca;
   --sub-text-color: #666;
-  --blacl-text-color: #000;
+  --blacl-text-color: #3a3a3a;
   --title-text-size:2rem;
   --border-raduis:8px;
   --button-font-weight: 500;
   --text-font-weight:600;
   --delete-button-color: #dc3545;
-  --edit-button-color: #4CAF50;
+  --edit-button-color: #0855ca;
   --text-size-1:16px;
   --text-size-2:18px;
   --text-size-3:14px;
@@ -69,6 +69,14 @@ section {
     margin-left: 10px;
   }
 
+.error-message
+{
+  text-align: left;
+  margin-left: .1rem;
+  margin-top: .2rem;
+  font-size: var(--text-size-1);
+  color: var(--delete-button-color);
+}
 
 
  

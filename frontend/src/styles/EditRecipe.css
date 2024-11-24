@@ -53,7 +53,7 @@
   .edit-recipe-container-main .add-ingredient-button {
     padding: 15px 20px;
     margin-left: 10px;
-    background-color: var(--sub-text-color);
+    background-color:var(--blacl-text-color);
     color: var(--color-white);
     border: none;
     border-radius: var( --border-raduis);

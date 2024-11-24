@@ -1,5 +1,6 @@
 import React from 'react';
 import './../../styles/home/RecipeCard.css'; // Optional: Add styles for the recipe card
+import { FaEdit, FaTrash } from 'react-icons/fa'; 
 
 function RecipeCard({ title, description, onView, onDelete, onUpdate }) {
   // Limit the description to 20 words
@@ -24,8 +25,8 @@ function RecipeCard({ title, description, onView, onDelete, onUpdate }) {
         <p className="recipe-card-description">{shortDescription}</p>
       </div>
       <div className="recipe-card-actions">
-        <button className="recipe-card-button update-btn" onClick={handleUpdateClick}>Update</button>
-        <button className="recipe-card-button delete-btn" onClick={handleDeleteClick}>Delete</button>
+        <button className="recipe-card-button update-btn" onClick={handleUpdateClick}><FaEdit /> Update</button>
+        <button className="recipe-card-button delete-btn" onClick={handleDeleteClick}><FaTrash /> Delete</button>
       </div>
     </div>
   );

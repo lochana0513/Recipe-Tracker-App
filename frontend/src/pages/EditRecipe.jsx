@@ -1,23 +1,93 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { MdArrowBack } from 'react-icons/md';
 import './../styles/EditRecipe.css';
-import { useNavigate } from 'react-router-dom';
+import ConfirmationModal from './../components/controllers/ConfirmationModal';
+import Notification from './../components/controllers/Notification';
+
 function EditRecipe() {
   const { id } = useParams(); // Extract the recipe ID from the route
+  const navigate = useNavigate(); // Initialize useNavigate hook
+
   const [recipeName, setRecipeName] = useState('');
   const [description, setDescription] = useState('');
   const [ingredients, setIngredients] = useState([]);
   const [ingredient, setIngredient] = useState('');
 
-  const navigate = useNavigate(); // Initialize useNavigate hook
+  // Error states
+  const [recipeNameError, setRecipeNameError] = useState('');
+  const [descriptionError, setDescriptionError] = useState('');
+  const [ingredientsError, setIngredientsError] = useState('');
+  const [ingredientError, setIngredientError] = useState('');
 
-  const handleBackClick = () => {
-    navigate(`/`); // Navigate to the home page (or any other path you prefer)
-  }
+  const [showConfirmation, setShowConfirmation] = useState(false);
+  const [showNotification, setShowNotification] = useState(false);
+  const [notificationType, setNotificationType] = useState('');
+  const [notificationMessage, setNotificationMessage] = useState('');
 
+  // Handle input changes with real-time error clearing
+  const handleRecipeNameChange = (e) => {
+    const value = e.target.value;
+    setRecipeName(value);
+    if (value.trim()) setRecipeNameError('');
+  };
+
+  const handleDescriptionChange = (e) => {
+    const value = e.target.value;
+    setDescription(value);
+    if (value.trim()) setDescriptionError('');
+  };
+
+  const handleIngredientChange = (e) => {
+    const value = e.target.value;
+    setIngredient(value);
+    if (value.trim()) setIngredientError('');
+  };
+
+  // Add new ingredient
+  const addIngredient = () => {
+    if (!ingredient.trim()) {
+      setIngredientError('Ingredient cannot be empty.');
+      return;
+    }
+    if (ingredients.includes(ingredient.trim())) {
+      setIngredientError('Ingredient already added.');
+      return;
+    }
+    setIngredients([...ingredients, ingredient.trim()]);
+    setIngredient(''); // Reset ingredient input field
+    setIngredientsError(''); // Clear ingredients error if it was set
+  };
+
+  // Remove an ingredient
+  const removeIngredient = (index) => {
+    setIngredients(ingredients.filter((_, i) => i !== index));
+  };
+
+  // Validate form before submission
+  const validateForm = () => {
+    let valid = true;
+
+    if (!recipeName.trim()) {
+      setRecipeNameError('Recipe name is required.');
+      valid = false;
+    }
+
+    if (!description.trim()) {
+      setDescriptionError('Description is required.');
+      valid = false;
+    }
+
+    if (ingredients.length === 0) {
+      setIngredientsError('At least one ingredient is required.');
+      valid = false;
+    }
+
+    return valid;
+  };
+
+  // Simulate fetching the existing recipe by ID on mount
   useEffect(() => {
-    // Simulate fetching the existing recipe by ID
     const mockRecipes = [
       { id: 1, name: 'Spaghetti Bolognese', description: 'Classic Italian dish.', ingredients: ['Spaghetti', 'Tomato Sauce'] },
       { id: 2, name: 'Chicken Curry', description: 'Spicy curry.', ingredients: ['Chicken', 'Turmeric'] },
@@ -30,97 +100,130 @@ function EditRecipe() {
       setDescription(recipe.description);
       setIngredients(recipe.ingredients);
     }
-  }, [id]); // Dependency ensures this runs when the ID changes
+  }, [id]);
 
-  const addIngredient = () => {
-    if (ingredient) {
-      setIngredients([...ingredients, ingredient]);
-      setIngredient('');
+  const confirmUpdateRecipe = () => {
+    // Close the confirmation modal
+    setShowConfirmation(false);
+
+    try {
+
+      const updatedRecipe = {
+        id: parseInt(id, 10),
+        name: recipeName,
+        description:description ,
+        ingredients: ingredients,
+      };
+
+      // Simulate successful addition
+      triggerNotification('success', 'Recipe Updated successfully!');
+    } catch (error) {
+      console.error('Error Updating recipe:', error);
+      triggerNotification('error', `Failed to Updating recipe: ${error.message}`);
     }
+
+     navigate(`/`);
   };
 
-  const removeIngredient = (index) => {
-    setIngredients(ingredients.filter((_, i) => i !== index));
+  const triggerNotification = (type, message) => {
+    setNotificationType(type);
+    setNotificationMessage(message);
+    setShowNotification(true);
   };
 
+  // Update recipe handler
   const handleUpdate = () => {
-    const updatedRecipe = {
-      id: parseInt(id, 10),
-      name: recipeName,
-      description,
-      ingredients,
-    };
-    console.log('Updated Recipe:', updatedRecipe);
-    // Add API call or state update logic here
+    if (!validateForm()) return;
+    setShowConfirmation(true);
   };
 
   return (
     <section className="edit-recipe-container-main">
-
-    <div className="edit-recipe-controll-container">
-            <button className="back-button" onClick={handleBackClick} >
-              <MdArrowBack />
-              <span>Back</span>
-            </button>
-    </div>
-
-
-    <div className="edit-recipe-container">
-      <h2 className="edit-recipe-title">Edit Recipe</h2>
-
-      <div className="form-group">
-        <label htmlFor="recipe-name" className="form-label">Recipe Name:</label>
-        <input
-          type="text"
-          id="recipe-name"
-          className="form-input"
-          value={recipeName}
-          onChange={(e) => setRecipeName(e.target.value)}
-          placeholder="Enter recipe name"
-        />
+      <div className="edit-recipe-controll-container">
+        <button className="back-button" onClick={() => navigate(`/`)}>
+          <MdArrowBack />
+          <span>Back</span>
+        </button>
       </div>
 
-      <div className="form-group">
-        <label htmlFor="description" className="form-label">Description:</label>
-        <textarea
-          id="description"
-          className="form-textarea"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          placeholder="Enter description"
-        />
-      </div>
+      <div className="edit-recipe-container">
+        <h2 className="edit-recipe-title">Edit Recipe</h2>
 
-      <div className="form-group">
-        <label htmlFor="ingredients" className="form-label">Ingredients:</label>
-        <div className="ingredient-input-container">
+        <div className="form-group">
+          <label htmlFor="recipe-name" className="form-label">Recipe Name:</label>
           <input
             type="text"
-            id="ingredients"
+            id="recipe-name"
             className="form-input"
-            value={ingredient}
-            onChange={(e) => setIngredient(e.target.value)}
-            placeholder="Enter an ingredient"
+            value={recipeName}
+            onChange={handleRecipeNameChange}
+            placeholder="Enter recipe name"
           />
-          <button className="add-ingredient-button" onClick={addIngredient}>Add Ingredient</button>
+          {recipeNameError && <p className="error-message">{recipeNameError}</p>}
         </div>
 
-        {ingredients.length > 0 && (
-          <ul className="ingredient-list">
-            {ingredients.map((ing, index) => (
-              <li key={index} className="ingredient-item">
-                {ing}
-                <button className="remove-ingredient-button" onClick={() => removeIngredient(index)}>Remove</button>
-              </li>
-            ))}
-          </ul>
-        )}
+        <div className="form-group">
+          <label htmlFor="description" className="form-label">Description:</label>
+          <textarea
+            id="description"
+            className="form-textarea"
+            value={description}
+            onChange={handleDescriptionChange}
+            placeholder="Enter description"
+          />
+          {descriptionError && <p className="error-message">{descriptionError}</p>}
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="ingredients" className="form-label">Ingredients:</label>
+          <div className="ingredient-input-container">
+            <input
+              type="text"
+              id="ingredients"
+              className="form-input"
+              value={ingredient}
+              onChange={handleIngredientChange}
+              placeholder="Enter an ingredient"
+            />
+            <button className="add-ingredient-button" onClick={addIngredient}>Add Ingredient</button>
+          </div>
+          {ingredientError && <p className="error-message">{ingredientError}</p>}
+
+          {ingredients.length > 0 && (
+            <ul className="ingredient-list">
+              {ingredients.map((ing, index) => (
+                <li key={index} className="ingredient-item">
+                  {ing}
+                  <button className="remove-ingredient-button" onClick={() => removeIngredient(index)}>Remove</button>
+                </li>
+              ))}
+            </ul>
+          )}
+          {ingredientsError && <p className="error-message">{ingredientsError}</p>}
+        </div>
+
+        <div className="edit-recipe-save-container">
+          <button className="save-recipe-button" onClick={handleUpdate}>Update Recipe</button>
+        </div>
       </div>
 
-      <div className="edit-recipe-save-container">
-        <button className="save-recipe-button" onClick={handleUpdate}>Update Recipe</button>
-      </div>
-    </div>
+      {showConfirmation && (
+        <ConfirmationModal
+          title="Update the Recipe"
+          message="Are you sure you want to Update this recipe?"
+          actionType="update"
+          onConfirm={confirmUpdateRecipe}
+          onCancel={() => setShowConfirmation(false)}
+        />
+      )}
+
+      {showNotification && (
+        <Notification
+          type={notificationType}
+          message={notificationMessage}
+          onClose={() => setShowNotification(false)}
+        />
+      )}
 
     </section>
   );

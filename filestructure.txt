@@ -21,6 +21,8 @@
                 |-- RecipeLog-logo.png
         |-- components
             |-- controllers
+                |-- ConfirmationModal.jsx
+                |-- Notification.jsx
                 |-- Popup.jsx
             |-- Footer.jsx
             |-- home
@@ -43,6 +45,8 @@
         |-- setupTests.js
         |-- styles
             |-- controllers
+                |-- ConfirmationModal.css
+                |-- Notification.css
                 |-- Popup.css
             |-- EditRecipe.css
             |-- Footer.css
