@@ -1,3 +1,4 @@
+/* Styles for the individual recipe card */
 .recipe-card {
     border: 1px solid #ccc;
     border-radius: 10px;
@@ -10,37 +11,38 @@
     text-align: left;
     min-height: 220px;
   }
+  /* Content section of the recipe card */
   .recipe-card-content
   {
     height: 130px;
     overflow: hidden;
   }
-  
+  /* Hover effect for the recipe card */
   .recipe-card:hover {
     transform: translateY(-5px);
     box-shadow: var(--box-shadow-hover); /* Add hover effect */
   }
-  
+  /* Title styling for the recipe card */
   .recipe-card-title {
     font-size: var(--text-size-2);
     font-weight: bold;
     color: var(--blacl-text-color)
   }
-  
+  /* Description styling for the recipe card */
   .recipe-card-description {
     font-size: var(--text-size-1);
     color: var(--sub-text-color);
     margin-top: 10px;
   }
 
-
+  /* Action buttons container at the bottom of the recipe card */
   .recipe-card-actions {
     display: flex;
     justify-content: flex-end;
     margin-top: 3rem;
 
   }
-  
+  /* Shared button styling for recipe card actions */
   .recipe-card-button {
     padding: 10px 20px;
     font-size: var(--text-size-1);
@@ -52,12 +54,12 @@
     align-items: center;
     gap:8px;
   }
-  
+  /* Specific styling for the update button */
   .update-btn {
     background-color:var(--blacl-text-color);
     color: var(--color-white);
   }
-  
+  /* Specific styling for the delete button */
   .delete-btn {
     background-color:var(--blacl-text-color);
     color: var(--color-white);

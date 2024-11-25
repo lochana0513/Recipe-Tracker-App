@@ -1,8 +1,10 @@
-.manage-bar-reciepe {
+  /* Manage bar recipe container */
+.manage-bar-reciepe 
+  {
     display: flex;
     justify-content: flex-end; 
   }
-  
+  /* Add recipe button styling */
   .add-reciepe-button {
     display: flex;
     align-items: center;
@@ -17,7 +19,7 @@
     font-weight: var(--button-font-weight);
   }
   
-  
+  /* Icon inside the add recipe button */
   .add-reciepe-button svg {
     margin-right: 12px; 
   }

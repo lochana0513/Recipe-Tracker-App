@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 function Login({ onLogin }) {
+  // State hooks for managing input values and error messages
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [emailError, setEmailError] = useState('');
@@ -12,7 +13,7 @@ function Login({ onLogin }) {
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
 
-  // Form validation
+  // Function for form validation
   const validateForm = () => {
     let valid = true;
     if (!email.trim()) {
@@ -35,15 +36,14 @@ function Login({ onLogin }) {
     return valid;
   };
 
-  // Login user function with API call
-
+    // Function to handle login request
     const loginUser = async (email, password) => {
         try {
         const userData = { email, password };
         console.log('Sending data:', userData);
         const response = await axios.post('http://localhost:5000/api/users/login', userData);
     
-        // Store the JWT token (you may want to store it in localStorage or context)
+        // On success, store the token
         localStorage.setItem('token', response.data.token);
         onLogin(response.data.token); // Update state in App component to reflect login success
     
@@ -67,6 +67,7 @@ function Login({ onLogin }) {
     }
   };
 
+  // Function to navigate to the signup page
   const handleSignUpClick = () => {
     navigate('/signup');
   };

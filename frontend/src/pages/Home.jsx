@@ -9,20 +9,26 @@ import Notification from './../components/controllers/Notification';
 
 function Home() {
   const [recipes, setRecipes] = useState([]);
+  // States for controlling notification
   const [showNotification, setShowNotification] = useState(false);
   const [notificationType, setNotificationType] = useState('');
   const [notificationMessage, setNotificationMessage] = useState('');
+  // State to track the visibility of the Add Recipe popup
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
+  // Function to open the popup
   const openPopup = () => setIsPopupOpen(true);
+  // Function to close the popup
   const closePopup = () => setIsPopupOpen(false);
 
+  // Function to trigger notifications (success/error)
   const triggerNotification = (type, message) => {
     setNotificationType(type);
     setNotificationMessage(message);
     setShowNotification(true);
   };
 
+  // Function to confirm and delete a recipe
   const confirmDelete = async (recipeToDelete) => {
     if (recipeToDelete !== null) {
       try {
@@ -35,8 +41,9 @@ function Home() {
   
         if (response.status === 200) {
           // If deletion was successful, update the state
-          fetchRecipes();
+          
           triggerNotification('success', 'Recipe deleted successfully!');
+          fetchRecipes();
         } else {
           triggerNotification('error', `Failed to delete recipe: ${response.data.message}`);
         }
@@ -52,26 +59,35 @@ function Home() {
     fetchRecipes();
   }, []);
 
+  // Function to fetch recipes from the server
   const fetchRecipes = async () => {
     try {
       const token = localStorage.getItem('token');
       if (!token) throw new Error('Token not found');
-
+  
       const response = await axios.get('http://localhost:5000/api/recipes', {
         headers: { Authorization: `Bearer ${token}` },
       });
-
+  
       if (response.status === 200) {
+        // If recipes are found, set the recipes state
         setRecipes(response.data);
       }
     } catch (error) {
       console.error('Error fetching recipes:', error);
-      const message = error.response?.data?.message || 'Failed to fetch recipes.';
-      triggerNotification('error', message);
+      
+      if (error.response?.status === 404) {
+        // If the server responds with a 404 error (No recipes found)
+        setRecipes([]);  // Set recipes state to an empty array
+      } else {
+        const message = error.response?.data?.message || 'Failed to fetch recipes.';
+        triggerNotification('error', message); // Trigger notification for other errors
+      }
     }
   };
+  
 
-
+  // Function to add a new recipe
   const addRecipe = async (newRecipe) => {
     try {
       const token = localStorage.getItem('token');

@@ -29,7 +29,7 @@ const ConfirmationModal = ({ title, message, actionType, onConfirm, onCancel }) 
             style={{ backgroundColor: getButtonColor() }}
             onClick={onConfirm}
           >
-            {actionType === 'delete' ? 'Delete' : 'Yes'}
+            {actionType === 'delete' ? 'OK' : 'Yes'}
           </button>
         </div>
       </div>

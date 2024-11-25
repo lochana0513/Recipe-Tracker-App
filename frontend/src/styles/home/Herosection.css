@@ -1,3 +1,4 @@
+/* Hero section styles */
 .hero-section {
     display: flex;
     align-items: center;
@@ -12,16 +13,16 @@
     padding: 20px 60px;
 
   }
-  
+  /* Content inside the hero section */
   .hero-content {
     max-width: 600px;
   }
-  
+  /* Heading inside the hero section */
   .hero-content h1 {
     font-size: 3rem;
     margin-bottom: 1rem;
   }
-  
+  /* Paragraph inside the hero section */
   .hero-content p {
     font-size: 1.5rem;
     line-height: 1.5;

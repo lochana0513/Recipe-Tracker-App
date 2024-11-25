@@ -55,8 +55,8 @@ section {
   letter-spacing: 1px;
   transition: all 0.2s linear;
   cursor: pointer;
-  border: 2px solid #dc3545;
-  background-color: #dc3545;
+  border: 2px solid var(--delete-button-color);
+  background-color: var(--delete-button-color);
   position: relative; /* Ensure it positions ::before properly */
   z-index: 1; /* Ensure it's above the ::before element */
   font-size:var(--text-size-1);

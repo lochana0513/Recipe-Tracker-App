@@ -9,16 +9,20 @@ function RecipeContainer({ recipes, setRecipes, onConfirmDelete, onNotify }) {
   const navigate = useNavigate();
 
   const [showConfirmation, setShowConfirmation] = useState(false);
+  // State for storing the recipe that is being considered for deletion
   const [recipeToDelete, setRecipeToDelete] = useState(null);
 
+  // Handle the click event for updating a recipe by navigating to the edit page
   const handleUpdateClick = (_id) => {
     navigate(`/edit-recipe/${_id}`);
   };
 
+  // Handle the click event for viewing a recipe by navigating to the view page
   const handleViewClick = (_id) => {
     navigate(`/view-recipe/${_id}`);
   };
 
+  // Handle the click event for deleting a recipe by showing the confirmation modal
   const handleDeleteClick = (_id) => {
     setRecipeToDelete(_id);
     setShowConfirmation(true);
@@ -46,7 +50,7 @@ function RecipeContainer({ recipes, setRecipes, onConfirmDelete, onNotify }) {
       {showConfirmation && (
         <ConfirmationModal
           title="Delete Recipe"
-          message="Are you sure you want to delete this recipe?"
+          message="Are you sure you want to delete the recipe?"
           actionType="delete"
           onConfirm={() => {
             onConfirmDelete(recipeToDelete);

@@ -1,11 +1,12 @@
-.edit-recipe-controll-container
-{
-  display: flex;
-  width: 100%;
-  align-items: flex-start;
-  justify-content: flex-start;
-}
-
+/* Main container for the edit recipe controls */
+  .edit-recipe-controll-container
+  {
+    display: flex;
+    width: 100%;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  /* Styling for the title in the edit recipe form */
   .edit-recipe-title {
     text-align: center;
     margin-bottom: 20px;
@@ -14,18 +15,18 @@
     text-align: center;
     margin-top: 20px;     
   }
-  
+  /* Form group container for spacing between input fields */
   .edit-recipe-container-main .form-group {
     margin-bottom: 20px;
   }
-  
+  /* Labels for input fields */
   .edit-recipe-container-main .form-label {
     font-size: var(--text-size-1);
     margin-bottom: 8px;
     display: block;
     text-align: left;
   }
-  
+  /* Input and textarea styling */
   .edit-recipe-container-main .form-input,.edit-recipe-container-main .form-textarea {
     width: 100%;
     padding: 15px;
@@ -33,23 +34,23 @@
     border: 1px solid #ccc;
     border-radius: var( --border-raduis);
   }
-  
+  /* Textarea-specific styling */
   .edit-recipe-container-main .form-textarea {
     height: 250px;
     resize: none;
 
   }
-  
+  /* Ingredient input container for adding ingredients */
   .edit-recipe-container-main .ingredient-input-container {
     display: flex;
     align-items: center;
     width: 80%;
   }
-
+  /* Ingredient input field styling */
   .edit-recipe-container-main .ingredient-input-container .form-input {
     width:80%;
   }
-  
+  /* Add ingredient button styling */
   .edit-recipe-container-main .add-ingredient-button {
     padding: 15px 20px;
     margin-left: 10px;
@@ -63,12 +64,12 @@
 
   }
   
-  
+  /* Styling for the ingredient list */
   .edit-recipe-container-main .ingredient-list {
     list-style-type: none;
     padding: 0;
   }
-  
+  /* Individual ingredient item styling */
   .edit-recipe-container-main .ingredient-item {
     display: flex;
     justify-content: space-between;
@@ -79,7 +80,7 @@
     width: 80%;
 
   }
-  
+  /* Remove ingredient button styling */
   .edit-recipe-container-main .remove-ingredient-button {
     background-color:var(--delete-button-color);
     color: var(--color-white);
@@ -91,7 +92,7 @@
     border-radius: var( --border-raduis);
   }
   
-
+  /* Container for the save button in the edit recipe form */
   .edit-recipe-save-container
   {
     width: 100%;
@@ -99,7 +100,7 @@
     justify-content: flex-end;
 
   }
-  
+  /* Save recipe button styling */
   .edit-recipe-container-main .save-recipe-button {
     width: 350px;
     padding: 20px 30px;

@@ -10,15 +10,17 @@ function SignUp() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
   const [nameError, setNameError] = useState('');
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
+
   const [passwordStrength, setPasswordStrength] = useState(null); // State for password strength
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
 
-  const strengthLabel = ['Weak', 'Fair', 'Good', 'Strong', 'Very Strong'];
-  const strengthColors = ['#ff4d4d', '#ffb84d', '#ffff4d', '#4dff4d', '#4d88ff'];
+  const strengthLabel = ['Weak', 'Fair', 'Good', 'Strong', 'Very Strong']; // Labels for password strength
+  const strengthColors = ['#ff4d4d', '#ffb84d', '#ffff4d', '#4dff4d', '#4d88ff']; // Colors based on password strength
 
   // Form validation function
   const validateForm = () => {
@@ -85,6 +87,7 @@ function SignUp() {
     }
   };
 
+  // Handle password input and evaluate strength using zxcvbn
   const handlePassword = (e) => {
     const newPasswordValue = e.target.value;
     setPassword(newPasswordValue);
@@ -93,6 +96,7 @@ function SignUp() {
     setPasswordStrength(strength);
   };
 
+  // Render password strength as a progress bar
   const renderPasswordStrength = () => {
     if (!passwordStrength) return null;
 

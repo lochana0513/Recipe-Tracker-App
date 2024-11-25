@@ -1,31 +1,33 @@
+/* Main container for the recipe view page */
 .view-recipe-container-main
 {
     min-height: 500px;
 }
+/* Container for recipe control buttons or elements */
 .view-recipe-controll-container {
     display: flex;
     align-items: center;
 }
 
-
+/* Styling for the recipe title */
 .view-recipe-container-main .view-recipe-title {
     font-size: var(--title-text-size);
     color: var(--blacl-text-color);
     margin-top: 20px;
     text-align: center;
 }
-
+/* Wrapper container for the recipe content */
 .view-recipe-container {
 
     margin-top: 40px;
     gap: 40px;
 }
-
+/* Styling for the left and right sections of the recipe container */
 .view-recipe-container-left, .view-recipe-container-right {
     width: 100%;
     margin-top: 2rem;
 }
-
+/* Styling for section titles */
 .view-recipe-container-main .section-title {
     font-size: var(--second-title-text-size);
     font-weight: var(--text-font-weight);
@@ -33,7 +35,7 @@
     margin-bottom: 10px;
     text-align: left;
 }
-
+/* Styling for the recipe description section */
 .view-recipe-container-main .recipe-description {
     font-size:var(--text-size-1);
     line-height: 1.6;
@@ -45,15 +47,15 @@
     text-align: left;
 }
 
-
+/* Styling for the ingredient list */
 .view-recipe-container-main .ingredient-list {
     list-style-type: none;
     padding: 0;
     display: flex;
     flex-wrap: wrap;
-    gap: 10px; /* Adds space between items */
+    gap: 10px;
 }
-
+/* Styling for individual ingredient items */
 .view-recipe-container-main .ingredient-item {
     font-size: var(--text-size-1);
     color: var(--sub-text-color);
@@ -62,10 +64,10 @@
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease;
-    flex: 1 1 calc(50% - 10px); /* Makes each item take up 50% of the width minus the gap */
+    flex: 1 1 calc(50% - 10px); 
     margin-bottom: 10px;
 }
-
+/* Hover effect for ingredient items */
 .view-recipe-container-main .ingredient-item:hover {
     background-color: #f0f0f0;
 }

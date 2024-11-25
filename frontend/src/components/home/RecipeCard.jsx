@@ -1,5 +1,5 @@
 import React from 'react';
-import './../../styles/home/RecipeCard.css'; // Optional: Add styles for the recipe card
+import './../../styles/home/RecipeCard.css'; 
 import { FaEdit, FaTrash } from 'react-icons/fa'; 
 
 // Functional component for displaying a recipe card
@@ -26,7 +26,7 @@ function RecipeCard({ title, description, onView, onDelete, onUpdate }) {
         <p className="recipe-card-description">{shortDescription}</p>
       </div>
       <div className="recipe-card-actions">
-        <button className="recipe-card-button update-btn" onClick={handleUpdateClick}><FaEdit /> Update</button>
+        <button className="recipe-card-button update-btn" onClick={handleUpdateClick}><FaEdit /> Edit</button>
         <button className="recipe-card-button delete-btn" onClick={handleDeleteClick}><FaTrash /> Delete</button>
       </div>
     </div>

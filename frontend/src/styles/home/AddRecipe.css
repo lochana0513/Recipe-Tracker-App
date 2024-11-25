@@ -6,24 +6,24 @@
     background-color: transparent;
 
   }
-  
+  /* Title for the add recipe form */
   .add-recipe-title {
     text-align: center;
     font-size: var(--second-title-text-size);
     margin-bottom: 20px;
   }
-  
+  /* Form group container (for each field) */
   .form-group {
     margin-bottom: 20px;
   }
-  
+  /* Label for form fields */
   .form-label {
     font-size: 16px;
     margin-bottom: 8px;
     display: block;
     text-align: left;
   }
-  
+  /* Input fields and textareas */
   .form-input, .form-textarea {
     width: 100%;
     padding: 15px;
@@ -31,22 +31,22 @@
     border: 1px solid #ccc;
     border-radius: var( --border-raduis);
   }
-  
+  /* Styling for text areas */
   .form-textarea {
     height: 150px;
     resize: none;
 
   }
-  
+  /* Container for ingredient input with flexbox */
   .ingredient-input-container {
     display: flex;
     align-items: center;
   }
-
+  /* Input field for ingredients with a custom width */
   .ingredient-input-container .form-input {
     width:75%;
   }
-  
+  /* Button to add ingredients */
   .add-ingredient-button {
     padding: 15px 20px;
     margin-left: 10px;
@@ -60,12 +60,12 @@
 
   }
   
-  
+  /* Styling for the ingredient list (unordered list) */
   .ingredient-list {
     list-style-type: none;
     padding: 0;
   }
-  
+  /* Styling for each ingredient item in the list */
   .ingredient-item {
     display: flex;
     justify-content: space-between;
@@ -75,7 +75,7 @@
     border-bottom: 1px solid #ccc;
 
   }
-  
+  /* Button to remove ingredients */
   .remove-ingredient-button {
     background-color:var(--delete-button-color);
     color: var(--color-white);
@@ -87,12 +87,12 @@
     border-radius: var( --border-raduis);
   }
   
-
+  /* Container for the save button */
   .add-recipe-save-container
   {
     width: 100%;
   }
-  
+  /* Save button for saving the recipe */
   .save-recipe-button {
     width: 350px;
     padding: 15px 20px;

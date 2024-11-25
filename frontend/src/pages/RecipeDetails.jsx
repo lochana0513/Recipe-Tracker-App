@@ -7,6 +7,7 @@ import './../styles/RecipeDetails.css';
 function RecipeDetails() {
     const navigate = useNavigate();
     const { id } = useParams(); // Extract the recipe ID from the route
+    // State hooks for managing data
     const [recipeName, setRecipeName] = useState('');
     const [description, setDescription] = useState('');
     const [ingredients, setIngredients] = useState([]);

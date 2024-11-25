@@ -1,3 +1,4 @@
+/* Main signup container for aligning content */
 .signup-container {
     display: flex;
     height: 100vh;
@@ -6,7 +7,7 @@
     background-color: var(--box-background-color);
     padding: 20px;
   }
-  
+/* Wrapper for the signup box */  
   .signup-wrapper {
     display: flex;
     width: 100%;
@@ -17,7 +18,7 @@
     overflow: hidden;
   }
   
-  /* Left Section */
+/* Left Section */
   .signup-left {
     flex: 1;
     background: linear-gradient(150deg, #a2b2e5, #7193db);
@@ -29,20 +30,20 @@
     margin: 2rem;
     border-radius:var(--con-border-raduis);
   }
-  
+/* Title styling in the left section */
   .signup-left__title {
     font-size: var(--title-text-size);
     margin-bottom: 1rem;
     margin-top: 1rem;
     color:var(--color-white);
   }
-  
+/* Description styling in the left section */
   .signup-left__description {
     font-size: var(--text-size-1);
     line-height: 1.8;
     margin-bottom: 20px;
   }
-  
+/* Image styling in the left section */
   .signup-left__image {
     margin-top: auto;
     max-width: 200px;
@@ -51,7 +52,7 @@
     margin-bottom: 1rem;
   }
   
-  /* Right Section */
+/* Right Section */
   .signup-right {
     flex: 1;
     padding: 30px;
@@ -60,28 +61,28 @@
     flex-direction: column;
     justify-content: center;
   }
-  
+/* Welcome text styling in the right section */
   .signup-right__welcome {
     font-size: var(--title-text-size);
     margin-bottom: 10px;
   }
-  
+/* Informational text styling in the right section */
   .signup-right__text {
     margin-bottom: 30px;
     color: var(--sub-text-color);
   }
-  
+/* Form styling in the right section */
   .signup-right__form {
     display: flex;
     flex-direction: column;
   }
-  
+/* Error message styling inside the form */
   .signup-right__form .error-message {
     margin-bottom: 10px;
     margin-top: -12px;
     font-size: var(--text-size-3);
   }
-  
+/* Input fields styling */
   .signup-right__input[type="text"],
   .signup-right__input[type="email"],
   .signup-right__input[type="password"] {
@@ -97,7 +98,7 @@
     border-color: #695CFE;
     outline: none;
   }
-  
+/* Signup button styling */
   .signup-right__button {
     padding: 15px;
     background-color:var(--color-primary);
@@ -118,8 +119,8 @@
     font-weight: bold;
     font-size: var(--second-title-text-size);
   }
-  
-.password-strength-container
-{
+/* Password strength container styling */
+  .password-strength-container
+  {
     font-size: var(--text-size-3);
-}
+  }

@@ -1,3 +1,4 @@
+/* Container for notification - positioned at the top of the screen */
 .notification-container {
     position: fixed;
     top: 20px;
@@ -15,45 +16,25 @@
     font-size: 14px;
   }
   
- .notification-container {
-    position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    min-width: 300px;
-    max-width: fit-content;
-    padding: 10px 20px 10px 20px;
-    border-radius: var(--border-raduis);
-    color: var(--color-white);
-    display: flex;
-    align-items: center;
-    box-shadow: var(--box-shadow);
-    z-index: 1000;
-    font-size: 14px;
-  }
-  
+  /* Flex container for notification content - ensures alignment of icon, message, and close button */
   .notification-container .notification-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
   }
-  
+  /* Notification icon styling */
   .notification-container .notification-icon {
     margin-right: 10px;
   }
   
-  
+  /* Notification message styling - ensures it fills the remaining space */
   .notification-container .notification-message {
     flex: 1;
     margin-right: 10px;
   }
   
- .notification-container .notification-message {
-    flex: 1;
-    margin-right: 5px;
-  }
-  
+  /* Close button styling for the notification */
   .notification-container .notification-close {
     background: none;
     border: none;
@@ -62,6 +43,7 @@
     cursor: pointer;
   }
   
+  /* Hover effect for the close button */
   .notification-container .notification-close:hover {
     background: none;
    

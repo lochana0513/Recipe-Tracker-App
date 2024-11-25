@@ -1,4 +1,4 @@
-
+/* Main container for the login page */
 .login-container {
     display: flex;
     height: 100vh;
@@ -7,7 +7,7 @@
     background-color: var(--box-background-color);
     padding: 20px;
   }
-
+/* Wrapper for the login box */
   .login-wrapper {
     display: flex;
     width: 100%;
@@ -18,7 +18,7 @@
     overflow: hidden;
   }
   
-
+/* Left section of the login page */
   .login-left {
     flex: 1;
     background: linear-gradient(150deg, #a2b2e5, #7193db);
@@ -30,20 +30,20 @@
     margin: 2rem;
     border-radius:var(--con-border-raduis);
   }
-  
+/* Title styling in the left section */
   .login-left__title {
     font-size: var(--title-text-size);
     margin-bottom: 1rem;
     margin-top: 1rem;
     color:var(--color-white);
   }
-  
+/* Description text in the left section */  
   .login-left__description {
     font-size: var(--text-size-1);
     line-height: 1.8;
     margin-bottom: 20px;
   }
-  
+/* Image styling in the left section */ 
   .login-left__image {
     margin-top: auto;
     max-width: 200px;
@@ -52,7 +52,7 @@
     margin-bottom: 1rem;
   }
   
-  /* Right Section */
+/* Right section of the login page */
   .login-right {
     flex: 1;
     padding: 30px;
@@ -61,28 +61,30 @@
     flex-direction: column;
     justify-content: center;
   }
-  
+
+/* Welcome text styling in the right section */
   .login-right__welcome {
     font-size: var(--title-text-size);
     margin-bottom: 10px;
+    font-weight: bold;
   }
-  
+/* Informational text styling in the right section */  
   .login-right__text {
     margin-bottom: 30px;
     color: var(--sub-text-color);
   }
-  
+/* Form container styling */  
   .login-right__form {
     display: flex;
     flex-direction: column;
   }
-  
+/* Error message styling */  
   .login-right__form .error-message {
     margin-bottom: 5px;
     margin-top: -12px;
     font-size: var(--text-size-3);
   }
-  
+/* Input field styling for email */  
   .login-right__input[type="email"] {
     padding: 15px;
     margin-bottom: 15px;
@@ -91,7 +93,7 @@
     font-size: var(--text-size-3);
     transition: border-color 0.3s;
   }
-  
+/* Input field styling for password */  
   .login-right__input[type="password"] {
     padding: 15px;
     margin-bottom: 15px;
@@ -102,7 +104,7 @@
   }
 
   
-  
+/* Login button styling */  
   .login-right__button {
     padding: 15px;
     background-color:var(--color-primary);
@@ -118,10 +120,8 @@
   .login-right__button:hover {
     background-color:var(--color-primary)
   }
-  .login-right__welcome
-  {
-    font-weight: bold;
-  }
+
+  /* Sign-up link styling */
   .login-right_signup {
     text-align: right;
     margin-bottom: 20px;

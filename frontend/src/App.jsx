@@ -49,6 +49,7 @@ function App() {
     verifyToken();
   }, []);
 
+  // Function to verify if the token stored in localStorage is valid
   const verifyToken = async () => {
     const token = localStorage.getItem('token');
     if (token) {
@@ -74,6 +75,7 @@ function App() {
     }
   };
 
+  // Function to fetch user data based on the stored token
   const fetchUserData = async () => {
     try {
       const token = localStorage.getItem('token');

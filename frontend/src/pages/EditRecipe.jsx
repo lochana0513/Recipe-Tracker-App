@@ -4,24 +4,26 @@ import { MdArrowBack } from 'react-icons/md';
 import './../styles/EditRecipe.css';
 import ConfirmationModal from './../components/controllers/ConfirmationModal';
 import Notification from './../components/controllers/Notification';
-import axios from 'axios'; // Import Axios
+import axios from 'axios'; 
 
 function EditRecipe() {
-  const { id } = useParams(); // Extract the recipe ID from the route
+  const { id } = useParams();  // Extract the recipe ID from the URL parameters
   const navigate = useNavigate(); // Initialize useNavigate hook
 
+  // State hooks for recipe details and form error handling
   const [recipeName, setRecipeName] = useState('');
   const [description, setDescription] = useState('');
   const [ingredients, setIngredients] = useState([]);
   const [ingredient, setIngredient] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
-  // Error states
+  // State hooks for form validation errors
   const [recipeNameError, setRecipeNameError] = useState('');
   const [descriptionError, setDescriptionError] = useState('');
   const [ingredientsError, setIngredientsError] = useState('');
   const [ingredientError, setIngredientError] = useState('');
 
+  // State hooks for managing modal and notification visibility
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [showNotification, setShowNotification] = useState(false);
   const [notificationType, setNotificationType] = useState('');
@@ -96,7 +98,7 @@ function EditRecipe() {
               if (!token) throw new Error('Unauthorized: Token not found.');
 
               const response = await axios.get(
-                  `http://localhost:5000/api/recipes/${id}`, // Replace with your API endpoint
+                  `http://localhost:5000/api/recipes/${id}`, // Update the recipe by ID
                   {
                       headers: { Authorization: `Bearer ${token}` },
                   }
@@ -106,7 +108,7 @@ function EditRecipe() {
 
               setRecipeName(recipe.name);
               setDescription(recipe.description);
-              setIngredients(recipe.ingredients || []); // Ensure ingredients is an array
+              setIngredients(recipe.ingredients || []); 
           } catch (error) {
               console.error('Error fetching recipe details:', error);
               const message = error.response?.data?.message || 'Failed to fetch recipe details.';
@@ -124,7 +126,7 @@ function EditRecipe() {
   
     try {
       const updatedRecipe = {
-        id, // Ensure 'id' is correctly set in the context
+        id,
         name: recipeName,
         description: description,
         ingredients: ingredients,
