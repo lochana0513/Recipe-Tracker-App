@@ -130,5 +130,4 @@ dist
 .pnp.*
 
 
-# .gitignore
-.env
+
