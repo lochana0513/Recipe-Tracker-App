@@ -66,8 +66,27 @@
     transition: background-color 0.3s ease;
     flex: 1 1 calc(50% - 10px); 
     margin-bottom: 10px;
+    text-align: left;
 }
 /* Hover effect for ingredient items */
 .view-recipe-container-main .ingredient-item:hover {
     background-color: #f0f0f0;
+}
+
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .view-recipe-container-main .ingredient-item
+    {
+    flex: 1 1 100%; 
+    margin-bottom: 10px;
+    }
+
+    .view-recipe-container-main .section-title {
+        font-size: var(--text-size-2);
+        font-weight: var(--text-font-weight);
+        color:var(--blacl-text-color);
+        margin-bottom: 10px;
+        text-align: left;
+    }
 }

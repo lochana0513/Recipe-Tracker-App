@@ -38,6 +38,41 @@
     border-radius: 25px;
     font-weight:var(--button-font-weight);
   }
-  
+    
+  @media (max-width: 1280px) {
+    .navbar {
+      padding: 2rem 3rem;
+    }
+  }
+    /* Mobile responsiveness */
+  @media (max-width: 768px) {
+  .navbar {
+    padding: 1rem 1rem;
+  }
 
-  
+  .navbar-left .logo img {
+    height: 50px;
+  }
+
+  /* Adjust the sign-out button's padding and font size */
+  .navbar-right .nav-button {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}
+
+  /* Very small mobile responsiveness */
+  @media (max-width: 480px) {
+    .navbar {
+      padding: 1rem 1rem;
+    }
+
+    .navbar-left .logo img {
+      height: 45px;
+    }
+
+    .navbar-right .nav-button {
+      padding: 8px 18px;
+      font-size: 12px;
+    }
+  }

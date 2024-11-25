@@ -2,8 +2,8 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height:100%;
     background-color: rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
@@ -92,3 +92,58 @@
     font-size: var(--text-size-1);
   }
   
+
+  @media (max-width: 768px) {
+    .modal-backdrop .modal-content {
+      max-width: 90%; /* Make modal content take up more width on smaller screens */
+      padding: 15px;
+    }
+  
+    .modal-backdrop .modal-content h2 {
+      font-size: 1.5rem; /* Adjust font size for headings */
+    }
+  
+    .modal-backdrop .modal-content p {
+      font-size: 1rem; /* Adjust font size for paragraph text */
+    }
+  
+    .modal-backdrop .modal-actions {
+      gap: 10px;
+    }
+  
+    .modal-backdrop .modal-actions button {
+      width: 100px; /* Make action buttons take up full width on smaller screens */
+    }
+  
+    .modal-backdrop .close-btn {
+      font-size: 18px; /* Adjust close button size for mobile */
+      top: 5px;
+      right: 10px;
+    }
+  }
+  
+  /* Very small mobile responsiveness */
+  @media (max-width: 480px) {
+    .modal-backdrop .modal-content {
+      max-width: 95%; /* Take up almost full width on very small screens */
+      padding: 12px;
+    }
+  
+    .modal-backdrop .modal-content h2 {
+      font-size: 1.3rem; /* Further reduce font size */
+    }
+  
+    .modal-backdrop .modal-content p {
+      font-size: 0.9rem; /* Further reduce font size */
+    }
+  
+    .modal-backdrop .modal-actions button {
+      width: 100px; /* Ensure buttons are full width */
+    }
+  
+    .modal-backdrop .close-btn {
+      font-size: 16px; /* Smaller close button */
+      top: 3px;
+      right: 8px;
+    }
+  }

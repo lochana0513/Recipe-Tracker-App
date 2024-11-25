@@ -81,4 +81,29 @@ section {
 }
 
 
- 
+     /* Mobile responsiveness */
+@media (max-width: 1280px) {
+section {
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+  margin-left: 3rem;
+  margin-right: 3rem;
+  text-align: center;
+}
+
+.back-button {
+
+  font-size:var(--text-size-3); 
+}
+
+}     
+@media (max-width: 768px) {
+  section {
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    text-align: center;
+  }
+}
+

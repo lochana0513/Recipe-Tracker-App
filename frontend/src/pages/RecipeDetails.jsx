@@ -3,6 +3,7 @@ import { MdArrowBack } from 'react-icons/md';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios'; // Import Axios
 import './../styles/RecipeDetails.css';
+import Loading from '../components/controllers/Loading';
 
 function RecipeDetails() {
     const navigate = useNavigate();
@@ -12,6 +13,8 @@ function RecipeDetails() {
     const [description, setDescription] = useState('');
     const [ingredients, setIngredients] = useState([]);
     const [errorMessage, setErrorMessage] = useState('');
+
+    const [loading, setLoading] = useState(true);
 
     const handleBackClick = () => {
         navigate(`/`); // Navigate to the home page
@@ -41,10 +44,21 @@ function RecipeDetails() {
                 const message = error.response?.data?.message || 'Failed to fetch recipe details.';
                 setErrorMessage(message);
             }
+
+            setTimeout(() => {
+                setLoading(false); // Hide loader after some time
+              }, 250);
         };
 
         fetchRecipeDetails();
     }, [id]);
+
+    if (loading) {
+        // Show loading container while checking login
+        return (
+            <Loading/>
+        );
+    }
 
     return (
         <section className="view-recipe-container-main">

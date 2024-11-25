@@ -133,3 +133,41 @@
     margin-right: 5px;
   }
   
+
+
+  /* Mobile responsiveness */
+@media (max-width: 768px) {
+  /* Adjust the wrapper layout to stack sections vertically */
+  .login-left{
+    display: none;
+  }
+  .login-wrapper {
+    flex-direction: column;
+    padding: 10px;
+  }
+  /* Right section adjustments */
+  .login-right {
+    padding: 20px;
+    padding-right: 40px;
+  }
+
+  .login-right__input[type="email"],
+  .login-right__input[type="password"] {
+    padding: 12px;
+  }
+
+  .login-right__button {
+    padding: 12px;
+  }
+
+}
+
+/* Very small mobile responsiveness */
+@media (max-width: 480px) {
+
+  .login-right__input[type="email"],
+  .login-right__input[type="password"] {
+    padding: 10px;
+  }
+
+}

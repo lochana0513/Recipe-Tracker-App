@@ -10,6 +10,7 @@ import Login from "./pages/Login";
 import axios from 'axios';
 import ConfirmationModal from './components/controllers/ConfirmationModal';
 import Notification from './components/controllers/Notification';
+import Loading from "./components/controllers/Loading";
 
 function App() {
   // State to track login status
@@ -20,6 +21,8 @@ function App() {
   const [showNotification, setShowNotification] = useState(false);
   const [notificationType, setNotificationType] = useState('');
   const [notificationMessage, setNotificationMessage] = useState('');
+
+  const [loading, setLoading] = useState(true);
 
   // Function to handle user login
   const handleLogin = (token) => {
@@ -73,6 +76,9 @@ function App() {
       setIsLoggedIn(false);
       console.log('No token found in localStorage.');
     }
+    setTimeout(() => {
+      setLoading(false); // Hide loader after some time
+    }, 500);
   };
 
   // Function to fetch user data based on the stored token
@@ -100,6 +106,13 @@ function App() {
     
     return isLoggedIn ? element : <Navigate to="/login" />;
   };
+
+  if (loading) {
+    // Show loading container while checking login
+    return (
+        <Loading/>
+    );
+  }
 
   return (
     <div className="App">

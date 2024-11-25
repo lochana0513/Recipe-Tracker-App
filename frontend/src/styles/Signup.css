@@ -124,3 +124,37 @@
   {
     font-size: var(--text-size-3);
   }
+
+
+@media (max-width: 768px) {
+  .signup-left {
+      display: none;
+  }
+  .signup-wrapper {
+      flex-direction: column;
+      padding: 10px;
+  }
+  /* Right section adjustments */
+  .signup-right {
+      padding: 20px;
+      padding-right: 40px;
+  }
+
+  .signup-right__input[type="text"],
+  .signup-right__input[type="email"],
+  .signup-right__input[type="password"] {
+      padding: 12px;
+  }
+
+  .signup-right__button {
+      padding: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+    .signup-right__input[type="text"],
+    .signup-right__input[type="email"],
+    .signup-right__input[type="password"] {
+        padding: 10px;
+    }
+}

@@ -38,6 +38,7 @@
         |-- components
             |-- controllers
                 |-- ConfirmationModal.jsx
+                |-- Loading.jsx
                 |-- Notification.jsx
                 |-- Popup.jsx
             |-- Footer.jsx
@@ -62,6 +63,7 @@
         |-- styles
             |-- controllers
                 |-- ConfirmationModal.css
+                |-- Loading.css
                 |-- Notification.css
                 |-- Popup.css
             |-- EditRecipe.css

@@ -13,3 +13,20 @@
     margin-top: 20px;
   }
   
+@media (max-width: 1280px) {
+
+  .recipe-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 3 items per row */
+  }
+
+}
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+
+  .recipe-container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); /* 3 items per row */
+  }
+
+}

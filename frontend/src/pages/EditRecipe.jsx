@@ -5,6 +5,7 @@ import './../styles/EditRecipe.css';
 import ConfirmationModal from './../components/controllers/ConfirmationModal';
 import Notification from './../components/controllers/Notification';
 import axios from 'axios'; 
+import Loading from '../components/controllers/Loading';
 
 function EditRecipe() {
   const { id } = useParams();  // Extract the recipe ID from the URL parameters
@@ -28,6 +29,10 @@ function EditRecipe() {
   const [showNotification, setShowNotification] = useState(false);
   const [notificationType, setNotificationType] = useState('');
   const [notificationMessage, setNotificationMessage] = useState('');
+
+  const [loading, setLoading] = useState(true);
+
+
 
   // Handle input changes with real-time error clearing
   const handleRecipeNameChange = (e) => {
@@ -114,6 +119,9 @@ function EditRecipe() {
               const message = error.response?.data?.message || 'Failed to fetch recipe details.';
               setErrorMessage(message);
           }
+          setTimeout(() => {
+            setLoading(false); // Hide loader after some time
+          }, 250);
       };
 
       fetchRecipeDetails();
@@ -175,6 +183,13 @@ function EditRecipe() {
     if (!validateForm()) return;
     setShowConfirmation(true);
   };
+
+  if (loading) {
+    // Show loading container while checking login
+    return (
+        <Loading/>
+    );
+  }
 
   return (
     <section className="edit-recipe-container-main">
